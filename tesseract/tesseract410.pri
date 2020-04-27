@@ -1,4 +1,10 @@
 win32-msvc*{
+!contains(QMAKE_TARGET.arch, x86_64){
+INCLUDEPATH += C:\\tesseract\\include
+LIBS += -LC:\\tesseract\\x86\\vc15\\lib \
+       -ltesseract41
+}
+else{
 INCLUDEPATH += C:\\tesseract\\include 
 LIBS += -LC:\\tesseract\\x64\\vc15\\lib \
         -lpvt.cppan.demo.behdad.harfbuzz-1.9.0 \
@@ -41,11 +47,16 @@ LIBS += -LC:\\tesseract\\x64\\vc15\\lib \
         -lpvt.cppan.demo.xz_utils.lzma-5.2.4 \
        -ltesseract41
 }
+}
+
 
 win32-g++{
 
 }
 
 unix{
-
+INCLUDEPATH += /$HOME/tesseract/include
+LIBS += -L"/$HOME/tesseract/x64/unix_gcc/lib"
+        LIBS += -llibtesseract
 }
+
